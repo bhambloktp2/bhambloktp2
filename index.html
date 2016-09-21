@@ -118,7 +118,7 @@ var parentStyle = document.getElementById('parentStyle').sheet;
 },{}));
 
 parentStyle.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
-parentStyle.insertRule(`body { padding: ${decodeURIComponent(padding).replace(/"/ig,'')}; }`, parentStyle.rules.length);
+parentStyle.insertRule(`body { padding: ${decodeURIComponent(padding).replace(/"|'/ig,'')}; }`, parentStyle.rules.length);
 
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
