@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style id="twitter-inject">
+body a, body a:visited, body .timeline-Tweet-text a {
+  color: var(--secundary) !important;
+}
+body .timeline-Tweet-text a {
+  font-style: italic;
+}
+body .timeline-Tweet:hover {
+  background-color: transparent;
+}
+body .timeline-Tweet-text {
+  color: var(--primary) !important;
+  margin-left: 0 !important;
+}
+body .timeline-Tweet-media {
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+body .timeline-Tweet-text:before {
+  content: "-";
+  float: left;
+  width: 100%;
+  clear: both;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+body .timeline-Tweet-author {
+  float: left;
+  width: 100%;
+  padding-left: 0 !important;
+}
+body .TweetAuthor {
+  float: left;
+  height: 30px;
+  margin-top: 20px;
+  overflow: visible !important;
+}
+body .timeline-Tweet-brand {
+  float: left !important;
+  width: 100%;
+  font-size: 30px;
+}
+body .TweetAuthor-screenName {
+  color: var(--secundary) !important;
+  font-size: 24px !important;
+  font-weight: bold;
+}
+body .TweetAuthor-name,
+body .TweetAuthor-avatar,
+body .timeline-Tweet-brand,
+body .timeline-Tweet-actions,
+body .timeline-Tweet-metadata,
+body .TweetAuthor-verifiedBadge,
+body .timeline-Tweet-retweetCredit {
+  display: none;
+}
+body .timeline-TweetList-tweet {
+  opacity: 1;
+}
+body .timeline-TweetList-tweet.top {
+  position: absolute;
+  transition: opacity 0.4s linear;
+}
+body .timeline-TweetList-tweet.hide {
+  opacity: 0;
+}
+</style>
+<style id="parentStyle">
+body {
+  margin: 0;
+  padding: 0;
+}
+#custom-twitter-icon {
+  fill: var(--primary);
+  width: 40px;
+  height: 32.5px;
+}
+#timeline {
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+#timeline.hide {
+  opacity: 0;
+}
+</style>
+</head>
+<body>
+<div id="timeline" class="hide">
+  <svg
+    id="custom-twitter-icon"
+    viewbox="0 0 2000 1625.36"
+    width="2000"
+    height="1625.36"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="m 1999.9999,192.4 c -73.58,32.64 -152.67,54.69 -235.66,64.61 84.7,-50.78 149.77,-131.19 180.41,-227.01 -79.29,47.03 -167.1,81.17 -260.57,99.57 C 1609.3399,49.82 1502.6999,0 1384.6799,0 c -226.6,0 -410.328,183.71 -410.328,410.31 0,32.16 3.628,63.48 10.625,93.51 -341.016,-17.11 -643.368,-180.47 -845.739,-428.72 -35.324,60.6 -55.5583,131.09 -55.5583,206.29 0,142.36 72.4373,267.95 182.5433,341.53 -67.262,-2.13 -130.535,-20.59 -185.8519,-51.32 -0.039,1.71 -0.039,3.42 -0.039,5.16 0,198.803 141.441,364.635 329.145,402.342 -34.426,9.375 -70.676,14.395 -108.098,14.395 -26.441,0 -52.145,-2.578 -77.203,-7.364 52.215,163.008 203.75,281.649 383.304,284.946 -140.429,110.062 -317.351,175.66 -509.5972,175.66 -33.1211,0 -65.7851,-1.949 -97.8828,-5.738 181.586,116.4176 397.27,184.359 628.988,184.359 754.732,0 1167.462,-625.238 1167.462,-1167.47 0,-17.79 -0.41,-35.48 -1.2,-53.08 80.1799,-57.86 149.7399,-130.12 204.7499,-212.41"/>
+  </svg>
+</div>
+<script>
+var timeline = document.getElementById('timeline');
+var parentStyle = document.getElementById('parentStyle').sheet;
+// destructure the search-(query-param)-string into variables with default values;
+({
+  account = 'thisplays2',
+  timer = 4000,
+  media = false,
+  'number-of-tweets': number = 10,
+  'primary-color': primary = 'b40b2b',
+  'secundary-color': secundary = '111111',
+  'body-padding': padding = '2em'
+} = window.location.search.replace('?','').split('&').reduce((prev,next) => {
+  var query = next.split('=');
+  prev[query[0]] = query[1];
+  return prev;
+},{}));
+
+parentStyle.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
+parentStyle.insertRule(`body { padding: ${padding}; }`, parentStyle.rules.length);
+
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+}(document, "script", "twitter-wjs"));
+window.twttr.ready(
+  function (twttr) {
+    twttr.widgets.createTimeline({
+      sourceType: "profile",
+      screenName: account
+    },
+    timeline,
+    {
+      tweetLimit: number,
+      chrome: 'noheader, nofooter, noborders, transparent, noscrollbar',
+      //screenName: 'ThisPlays2',
+      showReplies: false
+    }).then(function (el) {
+      var style = document.getElementById('twitter-inject');
+      el.contentDocument.head.appendChild(style);
+      style.sheet.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
+      if(media===false) {
+        style.sheet.insertRule(`body .timeline-Tweet-media { display: none; }`, style.sheet.rules.length);
+      }
+      timeline.classList.remove('hide');
+      var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
+      list.forEach((item, i) => {
+        if(i) item.classList.add('hide');
+      });
+      setTimeout(() => {
+        list.forEach((item, i) => {
+          item.classList.add('top');
+        });
+      },timer-100);
+      var i=0;
+      setInterval(() => {
+        list.item(i++).classList.add('hide');
+        if(i>list.length - 1) i=0;
+        list.item(i).classList.remove('hide');
+      },timer);
+    });
+  }
+);
+</script>
+</body>
+</html>
