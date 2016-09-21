@@ -11,4 +11,5 @@ The following options are available:
   - secundary-color = '111111' // use rgb values without the hash (#)
   - body-padding = '2em'   // use em or px values
 
- Example: https://bhambloktp2.github.io/twitter-feed/?body-padding=2em&account=SnowAndRock&primary-color=b40b2b&secundary-color=111111&number-of-tweets=10&timer=4000&media=true
+
+Example: https://bhambloktp2.github.io/twitter-feed/?body-padding=2em&account=SnowAndRock&primary-color=b40b2b&secundary-color=111111&number-of-tweets=10&timer=4000&media=true
