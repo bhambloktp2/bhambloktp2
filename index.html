@@ -127,19 +127,19 @@ var query = window.location.search.replace('?','').split('&');
 for(var i=0; i<query.length; i++) {
   var params = query[i].split('=');
   switch(params[0]) {
-    case 'account': account = 'thisplays2';
+    case 'account': account = params[1];
       break;
-    case 'timer': timer = 4000;
+    case 'timer': timer = params[1];
       break;
-    case 'media': media = false;
+    case 'media': media = params[1];
       break;
-    case 'number-of-tweets': number = 10;
+    case 'number-of-tweets': number = params[1];
       break;
-    case 'primary-color': primary = 'b40b2b';
+    case 'primary-color': primary = params[1];
       break;
-    case 'secundary-color': secundary = '111111';
+    case 'secundary-color': secundary = params[1];
       break;
-    case 'body-padding': padding = '2em';
+    case 'body-padding': padding = params[1];
       break;
   }
 }
