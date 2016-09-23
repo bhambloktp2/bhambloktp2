@@ -103,7 +103,7 @@ body {
 var timeline = document.getElementById('timeline');
 var parentStyle = document.getElementById('parentStyle').sheet;
 // destructure the search-(query-param)-string into variables with default values;
-({
+/*({
   account = 'thisplays2',
   timer = 4000,
   media = false,
@@ -115,7 +115,34 @@ var parentStyle = document.getElementById('parentStyle').sheet;
   var query = next.split('=');
   prev[query[0]] = query[1];
   return prev;
-},{}));
+},{}));*/
+var account = 'thisplays2';
+var timer = 4000;
+var media = false;
+var number = 10;
+var primary = 'b40b2b';
+var secundary = '111111';
+var padding = '2em';
+var query = window.location.search.replace('?','').split('&');
+for(var i=0; i<query.length; i++) {
+  var params = query[i].split('=');
+  switch(params[0]) {
+    case 'account': account = 'thisplays2';
+      break;
+    case 'timer': timer = 4000;
+      break;
+    case 'media': media = false;
+      break;
+    case 'number-of-tweets': number = 10;
+      break;
+    case 'primary-color': primary = 'b40b2b';
+      break;
+    case 'secundary-color': secundary = '111111';
+      break;
+    case 'body-padding': padding = '2em';
+      break;
+  }
+}
 
 parentStyle.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
 parentStyle.insertRule(`body { padding: ${decodeURIComponent(padding).replace(/"|'/ig,'')}; }`, parentStyle.rules.length);
