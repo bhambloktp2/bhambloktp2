@@ -182,11 +182,6 @@ replaceCSS(parentStyle,'#000001','#'+primary);
 replaceCSS(parentStyle,'rgb(0, 0, 1)','#'+primary);
 replaceCSS(parentStyle,'#000002','#'+secundary);
 replaceCSS(parentStyle,'rgb(0, 0, 2)','#'+secundary);
-var style = document.getElementById('twitter-inject');
-replaceCSS(style.sheet,'#000001','#'+primary);
-replaceCSS(style.sheet,'rgb(0, 0, 1)','#'+primary);
-replaceCSS(style.sheet,'#000002','#'+secundary);
-replaceCSS(style.sheet,'rgb(0, 0, 2)','#'+secundary);
 
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -217,6 +212,11 @@ window.twttr.ready(
     }).then(function (el) {
       var polyFill = document.getElementById('classlist-polyfill');
       el.contentDocument.head.appendChild(polyFill);
+      var style = document.getElementById('twitter-inject');
+      replaceCSS(style.sheet,'#000001','#'+primary);
+      replaceCSS(style.sheet,'rgb(0, 0, 1)','#'+primary);
+      replaceCSS(style.sheet,'#000002','#'+secundary);
+      replaceCSS(style.sheet,'rgb(0, 0, 2)','#'+secundary);
       el.contentDocument.head.appendChild(style);
 
       timeline.classList.remove('hide');
