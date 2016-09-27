@@ -21,17 +21,17 @@ body .timeline-Tweet-media {
   margin-left: 0 !important;
   margin-bottom: 0 !important;
 }
-/*
-body .timeline-Tweet-text:before {
+
+body .timeline-Tweet-author:after {
   content: "-";
   display: block;
   float: left;
   width: 100%;
   clear: both;
-  margin-bottom: 6px;
+  margin: 6px 0;
   font-weight: bold;
 }
-*/
+
 body .timeline-Tweet-author {
   float: left;
   width: 100%;
@@ -208,6 +208,7 @@ window.twttr.ready(
       showReplies: false
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
+      el.contentDocument.head.appendChild(style);
       replaceCSS(style.sheet,'#111111','#'+primary);
       replaceCSS(style.sheet,'#222222','#'+secundary);
 
@@ -216,7 +217,6 @@ window.twttr.ready(
         addCSSRule(style.sheet,'body .timeline-Tweet-media','display: none;');
         // style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
-      el.contentDocument.head.appendChild(style);
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
       console.log('yo1');
