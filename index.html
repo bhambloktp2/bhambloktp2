@@ -101,7 +101,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v18</span>
+<span class="version">test windows v19</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -171,6 +171,8 @@ function addCSSRule(sheet, selector, rules, index) {
 function replaceCSS(sheet, needle, replace) {
   for(var i=0; i<sheet.rules.length; i++) {
     var text = sheet.rules[i].cssText;
+    console.log(text,needle);
+    console.log(text.indexOf(needle));
     if(text.indexOf(needle)!==-1) {
       console.log(text);
       text = text.replace(needle,replace);
@@ -227,7 +229,7 @@ window.twttr.ready(
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
       console.log('yo1');
       for(var i=0; i<list.length; i++) {
-        console.log(i);
+        console.log(i,list[i],list.item(i));
         if(i) list[i].classList.add('hide');
       }
       console.log('yo2');
