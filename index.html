@@ -144,8 +144,8 @@ for(var i=0; i<query.length; i++) {
   }
 }
 
-parentStyle.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
-parentStyle.insertRule(`body { padding: ${decodeURIComponent(padding).replace(/"|'/ig,'')}; }`, parentStyle.rules.length);
+parentStyle.insertRule(':root { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
+parentStyle.insertRule('body { padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+'; }', parentStyle.rules.length);
 
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -153,18 +153,18 @@ window.twttr = (function(d, s, id) {
   if (d.getElementById(id)) return t;
   js = d.createElement(s);
   js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
+  js.src = 'https://platform.twitter.com/widgets.js';
   fjs.parentNode.insertBefore(js, fjs);
   t._e = [];
   t.ready = function(f) {
     t._e.push(f);
   };
   return t;
-}(document, "script", "twitter-wjs"));
+}(document, 'script', 'twitter-wjs'));
 window.twttr.ready(
   function (twttr) {
     twttr.widgets.createTimeline({
-      sourceType: "profile",
+      sourceType: 'profile',
       screenName: account
     },
     timeline,
@@ -176,9 +176,9 @@ window.twttr.ready(
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
       el.contentDocument.head.appendChild(style);
-      style.sheet.insertRule(`:root { --primary: #${primary}; --secundary: #${secundary}; }`, 0);
+      style.sheet.insertRule(':root { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
       if(media===false) {
-        style.sheet.insertRule(`body .timeline-Tweet-media { display: none; }`, style.sheet.rules.length);
+        style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
