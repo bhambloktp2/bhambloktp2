@@ -21,14 +21,17 @@ body .timeline-Tweet-media {
   margin-left: 0 !important;
   margin-bottom: 0 !important;
 }
+/*
 body .timeline-Tweet-text:before {
   content: "-";
+  display: block;
   float: left;
   width: 100%;
   clear: both;
   margin-bottom: 6px;
   font-weight: bold;
 }
+*/
 body .timeline-Tweet-author {
   float: left;
   width: 100%;
@@ -98,7 +101,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v16</span>
+<span class="version">test windows v17</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -167,12 +170,20 @@ function addCSSRule(sheet, selector, rules, index) {
 }
 function replaceCSS(sheet, needle, replace) {
   for(var i=0; i<sheet.rules.length; i++) {
-    console.log(sheet.rules[i]);
+    var text = sheet.rules[i].cssText;
+    if((needle).test(text)) {
+      console.log(text);
+      text = text.replace(needle,replace));
+      console.log(text);
+      sheet.removeRule(i);
+      sheet.insertRule(text,i);
+    }
   }
 }
 addCSSRule(parentStyle,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-replaceCSS(parentStyle);
+replaceCSS(parentStyle,'var(--primary)','#'+primary);
+replaceCSS(parentStyle,'var(--secundary)','#'+secundary);
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
