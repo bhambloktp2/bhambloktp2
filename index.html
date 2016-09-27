@@ -14,6 +14,8 @@ body .timeline-Tweet:hover {
 body .timeline-Tweet-text {
   color: var(--primary) !important;
   margin-left: 0 !important;
+  float: left;
+  clear: both;
 }
 body .timeline-Tweet-media {
   margin-left: 0 !important;
@@ -96,7 +98,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v15</span>
+<span class="version">test windows v16</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -163,9 +165,14 @@ function addCSSRule(sheet, selector, rules, index) {
     sheet.addRule(selector, rules, index);
   }
 }
+function replaceCSS(sheet, needle, replace) {
+  for(var i=0; i<sheet.rules.length; i++) {
+    console.log(sheet.rules[i]);
+  }
+}
 addCSSRule(parentStyle,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-
+replaceCSS();
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
