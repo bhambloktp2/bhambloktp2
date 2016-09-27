@@ -169,11 +169,8 @@ function addCSSRule(sheet, selector, rules, index) {
 function replaceCSS(sheet, needle, replace) {
   for(var i=0; i<sheet.rules.length; i++) {
     var text = sheet.rules[i].cssText;
-    console.log(text,needle,text.indexOf(needle));
     if(text.indexOf(needle)!==-1) {
-      console.log(text);
       text = text.replace(needle,replace);
-      console.log(text);
       sheet.removeRule(i);
       sheet.insertRule(text,i);
     }
