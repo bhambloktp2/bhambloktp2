@@ -3,7 +3,7 @@
 <head>
 <style id="twitter-inject">
 body a, body a:visited, body .timeline-Tweet-text a {
-  color: #222222 !important;
+  color: #000002 !important;
 }
 body .timeline-Tweet-text a {
   font-style: italic;
@@ -12,7 +12,7 @@ body .timeline-Tweet:hover {
   background-color: transparent;
 }
 body .timeline-Tweet-text {
-  color: #111111 !important;
+  color: #000001 !important;
   margin-left: 0 !important;
   float: left;
   clear: both;
@@ -49,7 +49,7 @@ body .timeline-Tweet-brand {
   font-size: 30px;
 }
 body .TweetAuthor-screenName {
-  color: #222222 !important;
+  color: #000002 !important;
   font-size: 24px !important;
   font-weight: bold;
 }
@@ -79,10 +79,10 @@ body {
   padding: 0;
 }
 .version {
-  color: #111111;
+  color: #000001;
 }
 #custom-twitter-icon {
-  fill: #111111;
+  fill: #000001;
   width: 40px;
   height: 32.5px;
 }
@@ -121,7 +121,7 @@ var parentStyle = document.getElementById('parentStyle').sheet;
   media = false,
   'number-of-tweets': number = 10,
   'primary-color': primary = 'b40b2b',
-  'secundary-color': secundary = '222222',
+  'secundary-color': secundary = '000002',
   'body-padding': padding = '2em'
 } = window.location.search.replace('?','').split('&').reduce((prev,next) => {
   var query = next.split('=');
@@ -133,7 +133,7 @@ var timer = 4000;
 var media = false;
 var number = 10;
 var primary = 'b40b2b';
-var secundary = '222222';
+var secundary = '000002';
 var padding = '2em';
 var query = window.location.search.replace('?','').split('&');
 for(var i=0; i<query.length; i++) {
@@ -177,15 +177,15 @@ function replaceCSS(sheet, needle, replace) {
   }
 }
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-replaceCSS(parentStyle,'rgb(17, 17, 17)','#'+primary);
-replaceCSS(parentStyle,'#111111','#'+primary);
-replaceCSS(parentStyle,'rgb(34, 34, 34)','#'+secundary);
-replaceCSS(parentStyle,'#222222','#'+secundary);
+replaceCSS(parentStyle,'rgb(0, 0, 1)','#'+primary);
+replaceCSS(parentStyle,'#000001','#'+primary);
+replaceCSS(parentStyle,'rgb(0, 0, 2)','#'+secundary);
+replaceCSS(parentStyle,'#000002','#'+secundary);
 var style = document.getElementById('twitter-inject');
-replaceCSS(style.sheet,'rgb(17, 17, 17)','#'+primary);
-replaceCSS(style.sheet,'#111111','#'+primary);
-replaceCSS(style.sheet,'rgb(34, 34, 34)','#'+secundary);
-replaceCSS(style.sheet,'#222222','#'+secundary);
+replaceCSS(style.sheet,'rgb(0, 0, 1)','#'+primary);
+replaceCSS(style.sheet,'#000001','#'+primary);
+replaceCSS(style.sheet,'rgb(0, 0, 2)','#'+secundary);
+replaceCSS(style.sheet,'#000002','#'+secundary);
 
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
