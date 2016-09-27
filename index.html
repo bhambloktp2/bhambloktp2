@@ -73,6 +73,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.version {
+  color: var(--primary);
+}
 #custom-twitter-icon {
   fill: var(--primary);
   width: 40px;
@@ -88,7 +91,7 @@ body {
 </style>
 </head>
 <body>
-<span>test windows v5</span>
+<span class="version">test windows v6</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -146,9 +149,11 @@ for(var i=0; i<query.length; i++) {
 }
 
 function addCSSRule(sheet, selector, rules, index) {
+  console.log('1',selector, index);
   if(index === undefined) {
     index = sheet.rules.length;
   }
+  console.log('2',selector, index);
   if("insertRule" in sheet) {
     sheet.insertRule(selector + "{" + rules + "}", index);
   }
