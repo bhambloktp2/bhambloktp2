@@ -2,7 +2,13 @@
 <html>
 <head>
 <style id="twitter-inject">
-body a, body a:visited, body .timeline-Tweet-text a {
+body a {
+  color: #000002 !important;
+}
+body a:visited {
+  color: #000002 !important;
+}
+body .timeline-Tweet-text a {
   color: #000002 !important;
 }
 body .timeline-Tweet-text a {
@@ -53,15 +59,13 @@ body .TweetAuthor-screenName {
   font-size: 24px !important;
   font-weight: bold;
 }
-body .TweetAuthor-name,
-body .TweetAuthor-avatar,
-body .timeline-Tweet-brand,
-body .timeline-Tweet-actions,
-body .timeline-Tweet-metadata,
-body .TweetAuthor-verifiedBadge,
-body .timeline-Tweet-retweetCredit {
-  display: none;
-}
+body .TweetAuthor-name { display: none; }
+body .TweetAuthor-avatar { display: none; }
+body .timeline-Tweet-brand { display: none; }
+body .timeline-Tweet-actions { display: none; }
+body .timeline-Tweet-metadata { display: none; }
+body .TweetAuthor-verifiedBadge { display: none; }
+body .timeline-Tweet-retweetCredit { display: none; }
 body .timeline-TweetList-tweet {
   opacity: 1;
 }
