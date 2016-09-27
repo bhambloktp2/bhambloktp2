@@ -184,9 +184,11 @@ window.twttr.ready(
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
       list.forEach(function(item, i) {
+        console.log(item, i);
         if(i) item.classList.add('hide');
       });
       setTimeout(function() {
+        console.log('timeout');
         list.forEach(function(item, i) {
           item.classList.add('top');
         });
