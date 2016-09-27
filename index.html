@@ -144,7 +144,7 @@ for(var i=0; i<query.length; i++) {
   }
 }
 
-parentStyle.insertRule(':root { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
+parentStyle.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
 parentStyle.insertRule('body { padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+'; }', parentStyle.rules.length);
 
 window.twttr = (function(d, s, id) {
@@ -176,7 +176,7 @@ window.twttr.ready(
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
       el.contentDocument.head.appendChild(style);
-      style.sheet.insertRule(':root { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
+      style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
       if(media===false) {
         style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
