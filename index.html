@@ -172,21 +172,19 @@ function replaceCSS(sheet, needle, replace) {
     if(text.indexOf(needle)!==-1) {
       text = text.replace(needle,replace);
       sheet.deleteRule(i);
-      console.log('sheet length',i,sheet.rules.length, text);
-      if(i>sheet.rules.length) i = sheet.rules.length;
       sheet.insertRule(text,i);
     }
   }
 }
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-//replaceCSS(parentStyle,'#000001','#'+primary);
+replaceCSS(parentStyle,'#000001','#'+primary);
 replaceCSS(parentStyle,'rgb(0, 0, 1)','#'+primary);
-//replaceCSS(parentStyle,'#000002','#'+secundary);
+replaceCSS(parentStyle,'#000002','#'+secundary);
 replaceCSS(parentStyle,'rgb(0, 0, 2)','#'+secundary);
 var style = document.getElementById('twitter-inject');
-//replaceCSS(style.sheet,'#000001','#'+primary);
+replaceCSS(style.sheet,'#000001','#'+primary);
 replaceCSS(style.sheet,'rgb(0, 0, 1)','#'+primary);
-//replaceCSS(style.sheet,'#000002','#'+secundary);
+replaceCSS(style.sheet,'#000002','#'+secundary);
 replaceCSS(style.sheet,'rgb(0, 0, 2)','#'+secundary);
 
 window.twttr = (function(d, s, id) {
