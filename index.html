@@ -3,7 +3,7 @@
 <head>
 <style id="twitter-inject">
 body a, body a:visited, body .timeline-Tweet-text a {
-  color: var(--secundary) !important;
+  color: #222222 !important;
 }
 body .timeline-Tweet-text a {
   font-style: italic;
@@ -12,7 +12,7 @@ body .timeline-Tweet:hover {
   background-color: transparent;
 }
 body .timeline-Tweet-text {
-  color: var(--primary) !important;
+  color: #111111 !important;
   margin-left: 0 !important;
   float: left;
   clear: both;
@@ -49,7 +49,7 @@ body .timeline-Tweet-brand {
   font-size: 30px;
 }
 body .TweetAuthor-screenName {
-  color: var(--secundary) !important;
+  color: #222222 !important;
   font-size: 24px !important;
   font-weight: bold;
 }
@@ -79,11 +79,11 @@ body {
   padding: 0;
 }
 .version {
-  color: var(--primary);
+  color: #111111;
 }
 #custom-twitter-icon {
   fill: red;
-  fill: var(--primary);
+  fill: #111111;
   width: 40px;
   height: 32.5px;
 }
@@ -101,7 +101,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v19</span>
+<span class="version">test windows v20</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -143,7 +143,7 @@ for(var i=0; i<query.length; i++) {
   switch(params[0]) {
     case 'account': account = params[1];
       break;
-    case 'timer': timer = params[1];
+    case 'timer': timer = parseInt(params[1],10);
       break;
     case 'media': media = params[1];
       break;
@@ -182,10 +182,9 @@ function replaceCSS(sheet, needle, replace) {
     }
   }
 }
-addCSSRule(parentStyle,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-replaceCSS(parentStyle,'var(--primary)','#'+primary);
-replaceCSS(parentStyle,'var(--secundary)','#'+secundary);
+replaceCSS(parentStyle,'#111111','#'+primary);
+replaceCSS(parentStyle,'#222222','#'+secundary);
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -214,7 +213,6 @@ window.twttr.ready(
       showReplies: false
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
-      addCSSRule(style.sheet,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 
       // style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
       if(false && media === false) {
@@ -230,13 +228,13 @@ window.twttr.ready(
       console.log('yo1');
       for(var i=0; i<list.length; i++) {
         console.log(i,list[i],list.item(i));
-        if(i) list[i].classList.add('hide');
+        if(i) list.item(i).classList.add('hide');
       }
       console.log('yo2');
       setTimeout(function() {
         console.log('timeout');
         for(var i=0; i<list.length; i++) {
-          list[i].classList.add('top');
+          list.item(i).classList.add('top');
         }
       },timer-100);
       console.log('yo3');
