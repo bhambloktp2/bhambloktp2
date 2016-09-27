@@ -77,6 +77,7 @@ body {
   color: var(--primary);
 }
 #custom-twitter-icon {
+  fill: red;
   fill: var(--primary);
   width: 40px;
   height: 32.5px;
@@ -95,7 +96,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v14</span>
+<span class="version">test windows v15</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -157,16 +158,13 @@ function addCSSRule(sheet, selector, rules, index) {
     index = sheet.rules.length;
   }
   if('insertRule' in sheet) {
-    console.log(selector + ' {' + rules + '}', index);
     sheet.insertRule(selector + ' {' + rules + '}', index);
   } else if('addRule' in sheet) {
     sheet.addRule(selector, rules, index);
   }
 }
 addCSSRule(parentStyle,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
-// parentStyle.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-// parentStyle.insertRule('body { padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+'; }', parentStyle.rules.length);
 
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -184,7 +182,6 @@ window.twttr = (function(d, s, id) {
 }(document, 'script', 'twitter-wjs'));
 window.twttr.ready(
   function (twttr) {
-    console.log('yo1');
     twttr.widgets.createTimeline({
       sourceType: 'profile',
       screenName: account
@@ -198,7 +195,6 @@ window.twttr.ready(
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
       addCSSRule(style.sheet,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
-      console.log('yo22');
 
       // style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
       if(false && media === false) {
@@ -208,21 +204,22 @@ window.twttr.ready(
         addCSSRule(style.sheet,'body .timeline-Tweet-media','display: none;');
         // style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
-      console.log('yoyo23');
       el.contentDocument.head.appendChild(style);
-      console.log('yo3');
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
+      console.log('yo1');
       for(var i=0; i<list.length; i++) {
         console.log(i);
         if(i) list[i].classList.add('hide');
       }
+      console.log('yo2');
       setTimeout(function() {
         console.log('timeout');
         for(var i=0; i<list.length; i++) {
           list[i].classList.add('top');
         }
       },timer-100);
+      console.log('yo3');
       var i=0;
       setInterval(function() {
         list.item(i++).classList.add('hide');
