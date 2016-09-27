@@ -174,7 +174,6 @@ function replaceCSS(sheet, needle, replace) {
   for(var i=0; i<sheet.rules.length; i++) {
     var text = sheet.rules[i].cssText;
     if(text.indexOf(needle)!==-1) {
-      console.log(text, 'delete rule ',i,' from ',sheet.rules.length);
       text = text.replace(needle,replace);
       sheet.deleteRule(i);
       sheet.insertRule(text,i);
@@ -214,7 +213,6 @@ window.twttr.ready(
       //screenName: 'ThisPlays2',
       showReplies: false
     }).then(function (el) {
-      console.log('v1');
       var polyFill = document.getElementById('classlist-polyfill');
       el.contentDocument.head.appendChild(polyFill);
       var style = document.getElementById('twitter-inject');
