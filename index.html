@@ -210,14 +210,15 @@ window.twttr.ready(
       //screenName: 'ThisPlays2',
       showReplies: false
     }).then(function (el) {
+      console.log('v1');
       var polyFill = document.getElementById('classlist-polyfill');
       el.contentDocument.head.appendChild(polyFill);
       var style = document.getElementById('twitter-inject');
+      el.contentDocument.head.appendChild(style);
       replaceCSS(style.sheet,'#000001','#'+primary);
       replaceCSS(style.sheet,'rgb(0, 0, 1)','#'+primary);
       replaceCSS(style.sheet,'#000002','#'+secundary);
       replaceCSS(style.sheet,'rgb(0, 0, 2)','#'+secundary);
-      el.contentDocument.head.appendChild(style);
 
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
