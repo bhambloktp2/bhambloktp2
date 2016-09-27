@@ -186,7 +186,7 @@ window.twttr.ready(
         if(i) item.classList.add('hide');
       });
       setTimeout(function() {
-        list.forEach((item, i) => {
+        list.forEach(function(item, i) {
           item.classList.add('top');
         });
       },timer-100);
