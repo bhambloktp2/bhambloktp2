@@ -232,7 +232,6 @@ window.twttr.ready(
           if(list.item(i).className.indexOf('top')===-1) {
             list.item(i).className = list.item(i).className+' top';
           }
-          console.log('1',i);
         }
       },timer-100);
       var i=0;
@@ -245,7 +244,6 @@ window.twttr.ready(
         if(list.item(i).className.indexOf('hide')!==-1) {
           list.item(i).className = list.item(i).className.replace('hide','');
         }
-        console.log('2',i);
       },timer);
     });
   }
