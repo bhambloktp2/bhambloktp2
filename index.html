@@ -185,13 +185,13 @@ window.twttr.ready(
       list.forEach((item, i) => {
         if(i) item.classList.add('hide');
       });
-      setTimeout(() => {
+      setTimeout(function() {
         list.forEach((item, i) => {
           item.classList.add('top');
         });
       },timer-100);
       var i=0;
-      setInterval(() => {
+      setInterval(function() {
         list.item(i++).classList.add('hide');
         if(i>list.length - 1) i=0;
         list.item(i).classList.remove('hide');
