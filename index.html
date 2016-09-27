@@ -101,7 +101,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v17</span>
+<span class="version">test windows v18</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -173,7 +173,7 @@ function replaceCSS(sheet, needle, replace) {
     var text = sheet.rules[i].cssText;
     if((needle).test(text)) {
       console.log(text);
-      text = text.replace(needle,replace));
+      text = text.replace(needle,replace);
       console.log(text);
       sheet.removeRule(i);
       sheet.insertRule(text,i);
