@@ -82,7 +82,6 @@ body {
   color: #111111;
 }
 #custom-twitter-icon {
-  fill: red;
   fill: #111111;
   width: 40px;
   height: 32.5px;
@@ -101,7 +100,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">version 01</span>
+<span class="version">version 2</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -224,8 +223,9 @@ window.twttr.ready(
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
       console.log('yo1');
       for(var i=0; i<list.length; i++) {
-        console.log(i,list[i],list.item(i));
-        if(i) list.item(i).classList.add('hide');
+        if(i && list.item(i).className.indexOf('hide')===-1) {
+          list.item(i).className = list.item(i).className+' hide';
+        }
       }
       console.log('yo2');
       setTimeout(function() {
