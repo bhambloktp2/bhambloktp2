@@ -100,7 +100,6 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">version 3</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -180,6 +179,10 @@ function replaceCSS(sheet, needle, replace) {
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
 replaceCSS(parentStyle,'#111111','#'+primary);
 replaceCSS(parentStyle,'#222222','#'+secundary);
+var twitterStyle = document.getElementById('twitter-inject');
+replaceCSS(twitterStyle.sheet,'#111111','#'+primary);
+replaceCSS(twitterStyle.sheet,'#222222','#'+secundary);
+
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -209,10 +212,7 @@ window.twttr.ready(
     }).then(function (el) {
       var polyFill = document.getElementById('classlist-polyfill');
       el.contentDocument.head.appendChild(polyFill);
-      var style = document.getElementById('twitter-inject');
-      el.contentDocument.head.appendChild(style);
-      replaceCSS(style.sheet,'#111111','#'+primary);
-      replaceCSS(style.sheet,'#222222','#'+secundary);
+      el.contentDocument.head.appendChild(twitterStyle);
 
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
