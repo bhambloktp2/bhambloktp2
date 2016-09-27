@@ -171,7 +171,7 @@ function replaceCSS(sheet, needle, replace) {
     var text = sheet.rules[i].cssText;
     if(text.indexOf(needle)!==-1) {
       text = text.replace(needle,replace);
-      sheet.removeRule(i);
+      sheet.deleteRule(i);
       console.log('sheet length',i,sheet.rules.length, text);
       if(i>sheet.rules.length) i = sheet.rules.length;
       sheet.insertRule(text,i);
