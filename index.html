@@ -100,7 +100,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">version 2</span>
+<span class="version">version 3</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -214,32 +214,38 @@ window.twttr.ready(
       replaceCSS(style.sheet,'#111111','#'+primary);
       replaceCSS(style.sheet,'#222222','#'+secundary);
 
-      // style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
-      if(false && media === false) {
-        addCSSRule(style.sheet,'body .timeline-Tweet-media','display: none;');
-        // style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
-      }
       timeline.classList.remove('hide');
       var list = el.contentDocument.querySelectorAll('.timeline-TweetList-tweet');
-      console.log('yo1');
       for(var i=0; i<list.length; i++) {
+        if(media === false) {
+          var mediaEl = list.item(i).querySelector('.timeline-Tweet-media');
+          if(mediaEl) {
+            mediaEl.style.display = 'none';
+          }
+        }
         if(i && list.item(i).className.indexOf('hide')===-1) {
           list.item(i).className = list.item(i).className+' hide';
         }
       }
-      console.log('yo2');
       setTimeout(function() {
-        console.log('timeout');
         for(var i=0; i<list.length; i++) {
-          list.item(i).classList.add('top');
+          if(list.item(i).className.indexOf('top')===-1) {
+            list.item(i).className = list.item(i).className+' top';
+          }
+          console.log('1',i);
         }
       },timer-100);
-      console.log('yo3');
       var i=0;
       setInterval(function() {
-        list.item(i++).classList.add('hide');
-        if(i>list.length - 1) i=0;
-        list.item(i).classList.remove('hide');
+        if(list.item(i).className.indexOf('hide')===-1) {
+          list.item(i).className = list.item(i).className+' hide';
+        }
+        i++;
+        if(i > (list.length - 1)) i=0;
+        if(list.item(i).className.indexOf('hide')!==-1) {
+          list.item(i).className = list.item(i).className.replace('hide','');
+        }
+        console.log('2',i);
       },timer);
     });
   }
