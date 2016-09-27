@@ -91,7 +91,7 @@ body {
 </style>
 </head>
 <body>
-<span class="version">test windows v7</span>
+<span class="version">test windows v8</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -149,16 +149,12 @@ for(var i=0; i<query.length; i++) {
 }
 
 function addCSSRule(sheet, selector, rules, index) {
-  console.log('1',selector, index);
   if(index === undefined) {
     index = sheet.rules.length;
   }
-  console.log('2',selector, index);
   if('insertRule' in sheet) {
-    console.log('INSERTRULE');
     sheet.insertRule(selector + '{' + rules + '}', index);
   } else if('addRule' in sheet) {
-    console.log('ADDRULE');
     sheet.addRule(selector, rules, index);
   }
 }
@@ -198,7 +194,7 @@ window.twttr.ready(
       console.log('yo2');
       var style = document.getElementById('twitter-inject');
       el.contentDocument.head.appendChild(style);
-        console.log('yo21');
+      console.log('yo21',timeline.classList);
       addCSSRule(style.sheet,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 
       // style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
