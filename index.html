@@ -95,7 +95,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v9</span>
+<span class="version">test windows v10</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -197,7 +197,7 @@ window.twttr.ready(
     }).then(function (el) {
       console.log('yo2');
       var style = document.getElementById('twitter-inject');
-      console.log('yo21', );
+      console.log('yo21',style.sheet);
       addCSSRule(style.sheet,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
       console.log('yo22');
 
