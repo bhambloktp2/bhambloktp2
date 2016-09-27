@@ -172,6 +172,7 @@ function replaceCSS(sheet, needle, replace) {
     if(text.indexOf(needle)!==-1) {
       text = text.replace(needle,replace);
       sheet.removeRule(i);
+      if(i>sheet.rules.length) i = sheet.rules.length;
       sheet.insertRule(text,i);
     }
   }
