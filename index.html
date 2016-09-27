@@ -101,7 +101,6 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v20</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -171,12 +170,8 @@ function addCSSRule(sheet, selector, rules, index) {
 function replaceCSS(sheet, needle, replace) {
   for(var i=0; i<sheet.rules.length; i++) {
     var text = sheet.rules[i].cssText;
-    console.log(text,needle);
-    console.log(text.indexOf(needle));
     if(text.indexOf(needle)!==-1) {
-      console.log(text);
       text = text.replace(needle,replace);
-      console.log(text);
       sheet.removeRule(i);
       sheet.insertRule(text,i);
     }
@@ -213,12 +208,11 @@ window.twttr.ready(
       showReplies: false
     }).then(function (el) {
       var style = document.getElementById('twitter-inject');
+      replaceCSS(style.sheet,'#111111','#'+primary);
+      replaceCSS(style.sheet,'#222222','#'+secundary);
 
       // style.sheet.insertRule('body { --primary: #'+primary+'; --secundary: #'+secundary+'; }', 0);
       if(false && media === false) {
-        console.log('test');
-        console.log(style.sheet.rules);
-        console.log(style.sheet.rules.length);
         addCSSRule(style.sheet,'body .timeline-Tweet-media','display: none;');
         // style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
