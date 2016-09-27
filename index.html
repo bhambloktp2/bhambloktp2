@@ -91,7 +91,7 @@ body {
 </style>
 </head>
 <body>
-<span class="version">test windows v6</span>
+<span class="version">test windows v7</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -154,10 +154,11 @@ function addCSSRule(sheet, selector, rules, index) {
     index = sheet.rules.length;
   }
   console.log('2',selector, index);
-  if("insertRule" in sheet) {
-    sheet.insertRule(selector + "{" + rules + "}", index);
-  }
-  else if("addRule" in sheet) {
+  if('insertRule' in sheet) {
+    console.log('INSERTRULE');
+    sheet.insertRule(selector + '{' + rules + '}', index);
+  } else if('addRule' in sheet) {
+    console.log('ADDRULE');
     sheet.addRule(selector, rules, index);
   }
 }
