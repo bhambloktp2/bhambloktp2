@@ -95,7 +95,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 </script>
 </head>
 <body>
-<span class="version">test windows v11</span>
+<span class="version">test windows v12</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -157,7 +157,8 @@ function addCSSRule(sheet, selector, rules, index) {
     index = sheet.rules.length;
   }
   if('insertRule' in sheet) {
-    sheet.insertRule(selector + '{' + rules + '}', index);
+    console.log(selector + ' {' + rules + '}', index);
+    sheet.insertRule(selector + ' {' + rules + '}', index);
   } else if('addRule' in sheet) {
     sheet.addRule(selector, rules, index);
   }
@@ -195,9 +196,7 @@ window.twttr.ready(
       //screenName: 'ThisPlays2',
       showReplies: false
     }).then(function (el) {
-      console.log('yo2');
       var style = document.getElementById('twitter-inject');
-      console.log('yo21',style.sheet);
       addCSSRule(style.sheet,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
       console.log('yo22');
 
@@ -209,7 +208,7 @@ window.twttr.ready(
         addCSSRule(style.sheet,'body .timeline-Tweet-media','display: none;');
         // style.sheet.insertRule('body .timeline-Tweet-media { display: none; }', style.sheet.rules.length);
       }
-      console.log('yo23');
+      console.log('yoyo23');
       el.contentDocument.head.appendChild(style);
       console.log('yo3');
       timeline.classList.remove('hide');
