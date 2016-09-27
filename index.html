@@ -88,7 +88,7 @@ body {
 </style>
 </head>
 <body>
-<span>test windows v3</span>
+<span>test windows v4</span>
 <div id="timeline" class="hide">
   <svg
     id="custom-twitter-icon"
@@ -163,9 +163,8 @@ window.twttr = (function(d, s, id) {
   return t;
 }(document, 'script', 'twitter-wjs'));
 window.twttr.ready(
-  console.log('yo1');
   function (twttr) {
-    console.log('yo12');
+    console.log('yo1');
     twttr.widgets.createTimeline({
       sourceType: 'profile',
       screenName: account
