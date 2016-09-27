@@ -172,7 +172,7 @@ function replaceCSS(sheet, needle, replace) {
 }
 addCSSRule(parentStyle,'body','--primary: #'+primary+'; --secundary: #'+secundary+';', 0);
 addCSSRule(parentStyle,'body','padding: '+decodeURIComponent(padding).replace(/"|'/ig,'')+';');
-replaceCSS();
+replaceCSS(parentStyle);
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
