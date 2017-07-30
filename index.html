@@ -76,6 +76,19 @@ body .timeline-TweetList-tweet.top {
 body .timeline-TweetList-tweet.hide {
   opacity: 0;
 }
+
+body.CotswoldOutdoor .timeline-Tweet-author {
+  padding-left: 60px !important;
+}
+body .timeline-Tweet-author:after {
+  content: "";
+  display: block;
+  float: left;
+  width: 100%;
+  clear: both;
+  margin: 6px 0;
+  font-weight: bold;
+}
 </style>
 <style id="parentStyle">
 body {
@@ -96,6 +109,11 @@ body {
 }
 #timeline.hide {
   opacity: 0;
+}
+
+.CotswoldOutdoor #custom-twitter-icon {
+  position: absolute;
+  margin: 26px 0 0 10px;
 }
 </style>
 <script id="classlist-polyfill">
@@ -159,6 +177,7 @@ for(var i=0; i<query.length; i++) {
       break;
   }
 }
+document.body.classList.add(account);
 
 function addCSSRule(sheet, selector, rules, index) {
   if(index === undefined) {
@@ -213,6 +232,7 @@ window.twttr.ready(
       //screenName: 'ThisPlays2',
       showReplies: false
     }).then(function (el) {
+      el.contentDocument.body.classList.add(account);
       var polyFill = document.getElementById('classlist-polyfill');
       el.contentDocument.head.appendChild(polyFill);
       var style = document.getElementById('twitter-inject');

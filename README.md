@@ -14,3 +14,6 @@ The following options are available:
 
 
 Example: https://bhambloktp2.github.io/twitter-feed/?body-padding=2em&account=SnowAndRock&primary-color=b40b2b&secundary-color=111111&number-of-tweets=10&timer=4000&media=true
+
+
+Example2: https://bhambloktp2.github.io/twitter-feed/?body-padding=2em&account=CotswoldOutdoor&primary-color=eeeeee&secundary-color=986454&number-of-tweets=2&timer=8000
